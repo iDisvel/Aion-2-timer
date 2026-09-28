@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AION II — Server Countdown</title>
+    <title>AION II — Countdown</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap');
@@ -14,10 +14,16 @@
         }
 
         :root {
-            --purple: #9b7cff;
-            --violet: #6d45ff;
-            --blue: #5aa9ff;
-            --white: #f7f4ff;
+            --purple: #987cff;
+            --violet: #633cff;
+            --blue: #5da9ff;
+
+            --gold: #d9b45a;
+            --gold-light: #ffe7a0;
+            --gold-bright: #fff1bd;
+            --gold-dark: #80651f;
+
+            --white: #f8f5ff;
         }
 
         html,
@@ -39,23 +45,26 @@
 
             background:
                 radial-gradient(
-                    ellipse at 50% 48%,
-                    rgba(89, 58, 190, .28) 0%,
-                    rgba(37, 25, 83, .18) 22%,
-                    transparent 52%
-                ),
-                radial-gradient(
-                    ellipse at 50% 100%,
-                    rgba(27, 78, 140, .20),
+                    ellipse at 50% 45%,
+                    rgba(105, 70, 220, .30) 0%,
+                    rgba(44, 29, 100, .17) 25%,
                     transparent 55%
                 ),
+
+                radial-gradient(
+                    ellipse at 50% 100%,
+                    rgba(180, 135, 45, .10),
+                    transparent 45%
+                ),
+
                 linear-gradient(
                     180deg,
                     #02030b 0%,
-                    #070817 48%,
-                    #02030a 100%
+                    #080817 48%,
+                    #03040b 100%
                 );
         }
+
 
         /* =====================================================
            BACKGROUND
@@ -64,11 +73,14 @@
         .background {
             position: fixed;
             inset: 0;
+
             overflow: hidden;
+
             pointer-events: none;
         }
 
-        /* Огромное магическое свечение */
+
+        /* Центральная аура */
 
         .aura {
             position: absolute;
@@ -86,32 +98,46 @@
             background:
                 radial-gradient(
                     circle,
-                    rgba(120, 79, 255, .18) 0%,
-                    rgba(80, 45, 180, .10) 25%,
-                    transparent 65%
+                    rgba(116, 75, 255, .22) 0%,
+                    rgba(90, 52, 190, .10) 27%,
+                    rgba(205, 165, 65, .035) 42%,
+                    transparent 67%
                 );
 
-            filter: blur(10px);
+            filter: blur(12px);
 
             animation: auraPulse 6s ease-in-out infinite;
         }
 
+
         @keyframes auraPulse {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(.9);
+
+            0%,
+            100% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(.9);
+
                 opacity: .55;
             }
 
             50% {
-                transform: translate(-50%, -50%) scale(1.1);
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.1);
+
                 opacity: 1;
             }
         }
 
-        /* Лучи */
+
+        /* =====================================================
+           LIGHT RAYS
+        ===================================================== */
 
         .rays {
             position: absolute;
+
             width: 140vmax;
             height: 140vmax;
 
@@ -123,56 +149,140 @@
             background:
                 conic-gradient(
                     from 0deg,
+
                     transparent 0deg,
-                    rgba(132, 97, 255, .035) 12deg,
+
+                    rgba(137, 101, 255, .045) 12deg,
+
                     transparent 25deg,
-                    transparent 47deg,
-                    rgba(90, 150, 255, .035) 59deg,
+
+                    transparent 45deg,
+
+                    rgba(230, 192, 92, .025) 57deg,
+
                     transparent 72deg,
+
                     transparent 110deg,
+
                     rgba(147, 100, 255, .04) 125deg,
+
                     transparent 140deg,
+
                     transparent 200deg,
-                    rgba(100, 90, 255, .035) 220deg,
+
+                    rgba(222, 184, 83, .025) 218deg,
+
                     transparent 240deg,
+
                     transparent 360deg
                 );
 
-            animation: rotateRays 45s linear infinite;
+            animation:
+                rotateRays 45s linear infinite;
         }
 
+
         @keyframes rotateRays {
+
             to {
-                transform: translate(-50%, -50%) rotate(360deg);
+                transform:
+                    translate(-50%, -50%)
+                    rotate(360deg);
             }
         }
 
-        /* Звёзды */
+
+        /* =====================================================
+           STARS
+        ===================================================== */
 
         .stars {
             position: absolute;
             inset: 0;
 
             background-image:
-                radial-gradient(1px 1px at 5% 12%, #fff, transparent),
-                radial-gradient(1px 1px at 12% 72%, #9e8cff, transparent),
-                radial-gradient(2px 2px at 18% 33%, #fff, transparent),
-                radial-gradient(1px 1px at 27% 12%, #a88cff, transparent),
-                radial-gradient(1px 1px at 33% 82%, #fff, transparent),
-                radial-gradient(2px 2px at 42% 24%, #a88cff, transparent),
-                radial-gradient(1px 1px at 49% 88%, #fff, transparent),
-                radial-gradient(1px 1px at 58% 13%, #a88cff, transparent),
-                radial-gradient(2px 2px at 67% 31%, #fff, transparent),
-                radial-gradient(1px 1px at 74% 77%, #a88cff, transparent),
-                radial-gradient(1px 1px at 83% 18%, #fff, transparent),
-                radial-gradient(2px 2px at 92% 64%, #9f8aff, transparent);
 
-            opacity: .65;
+                radial-gradient(
+                    1px 1px at 5% 12%,
+                    #fff,
+                    transparent
+                ),
 
-            animation: starsMove 8s ease-in-out infinite alternate;
+                radial-gradient(
+                    1px 1px at 12% 72%,
+                    #9e8cff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    2px 2px at 18% 33%,
+                    #fff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    1px 1px at 27% 12%,
+                    #e8c969,
+                    transparent
+                ),
+
+                radial-gradient(
+                    1px 1px at 33% 82%,
+                    #fff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    2px 2px at 42% 24%,
+                    #a88cff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    1px 1px at 49% 88%,
+                    #ffe7a0,
+                    transparent
+                ),
+
+                radial-gradient(
+                    1px 1px at 58% 13%,
+                    #a88cff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    2px 2px at 67% 31%,
+                    #fff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    1px 1px at 74% 77%,
+                    #d8b85f,
+                    transparent
+                ),
+
+                radial-gradient(
+                    1px 1px at 83% 18%,
+                    #fff,
+                    transparent
+                ),
+
+                radial-gradient(
+                    2px 2px at 92% 64%,
+                    #9f8aff,
+                    transparent
+                );
+
+            opacity: .7;
+
+            animation:
+                starsMove 8s ease-in-out infinite alternate;
         }
 
+
         @keyframes starsMove {
+
             from {
                 opacity: .35;
             }
@@ -182,14 +292,16 @@
             }
         }
 
+
         /* =====================================================
-           FLOATING PARTICLES
+           PARTICLES
         ===================================================== */
 
         .particles {
             position: absolute;
             inset: 0;
         }
+
 
         .particle {
             position: absolute;
@@ -199,14 +311,21 @@
 
             border-radius: 50%;
 
-            background: #bba9ff;
+            background:
+                linear-gradient(
+                    45deg,
+                    var(--gold-light),
+                    var(--purple)
+                );
 
             box-shadow:
-                0 0 8px #896dff,
-                0 0 18px #6240ff;
+                0 0 8px var(--gold),
+                0 0 18px var(--violet);
 
-            animation: floatParticle linear infinite;
+            animation:
+                floatParticle linear infinite;
         }
+
 
         .particle:nth-child(1) {
             left: 12%;
@@ -256,9 +375,14 @@
             animation-duration: 9s;
         }
 
+
         @keyframes floatParticle {
+
             0% {
-                transform: translateY(80px) scale(.4);
+                transform:
+                    translateY(80px)
+                    scale(.4);
+
                 opacity: 0;
             }
 
@@ -271,13 +395,17 @@
             }
 
             100% {
-                transform: translateY(-220px) scale(1.2);
+                transform:
+                    translateY(-220px)
+                    scale(1.2);
+
                 opacity: 0;
             }
         }
 
+
         /* =====================================================
-           CENTRAL MAGIC RING
+           MAGIC RING
         ===================================================== */
 
         .magic-ring {
@@ -289,36 +417,52 @@
             left: 50%;
             top: 50%;
 
-            transform: translate(-50%, -50%);
+            transform:
+                translate(-50%, -50%);
 
             border-radius: 50%;
 
             border:
-                1px solid rgba(143, 111, 255, .16);
+                1px solid
+                rgba(163, 127, 255, .18);
 
             box-shadow:
-                0 0 60px rgba(99, 63, 255, .08),
-                inset 0 0 60px rgba(90, 70, 255, .04);
 
-            animation: ringPulse 5s ease-in-out infinite;
+                0 0 60px
+                rgba(99, 63, 255, .08),
+
+                0 0 100px
+                rgba(220, 175, 70, .035),
+
+                inset 0 0 60px
+                rgba(90, 70, 255, .04);
+
+            animation:
+                ringPulse 5s ease-in-out infinite;
         }
+
 
         .magic-ring::before {
             content: "";
 
             position: absolute;
+
             inset: 35px;
 
             border-radius: 50%;
 
             border:
-                1px dashed rgba(137, 108, 255, .23);
+                1px dashed
+                rgba(137, 108, 255, .25);
 
-            animation: spinReverse 30s linear infinite;
+            animation:
+                spinReverse 30s linear infinite;
         }
 
+
         .magic-ring::after {
-            content: "✦  ◇  ✦  ◇  ✦  ◇  ✦  ◇";
+            content:
+                "✦  ◇  ✦  ◇  ✦  ◇  ✦  ◇";
 
             position: absolute;
 
@@ -327,21 +471,26 @@
             border-radius: 50%;
 
             display: flex;
+
             align-items: flex-start;
             justify-content: center;
 
-            padding-top: 0;
-
-            color: rgba(171, 145, 255, .35);
+            color:
+                rgba(222, 186, 91, .42);
 
             font-size: 16px;
+
             letter-spacing: 13px;
 
-            animation: spin 35s linear infinite;
+            animation:
+                spin 35s linear infinite;
         }
 
+
         @keyframes ringPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: .45;
             }
 
@@ -350,20 +499,25 @@
             }
         }
 
+
         @keyframes spin {
+
             to {
                 transform: rotate(360deg);
             }
         }
 
+
         @keyframes spinReverse {
+
             to {
                 transform: rotate(-360deg);
             }
         }
 
+
         /* =====================================================
-           MAIN CARD
+           MAIN PANEL
         ===================================================== */
 
         .container {
@@ -373,53 +527,70 @@
 
             width: min(960px, 92vw);
 
-            padding: 52px 45px 45px;
+            padding:
+                55px 45px 45px;
 
             text-align: center;
 
             background:
+
                 linear-gradient(
                     145deg,
-                    rgba(12, 11, 31, .88),
-                    rgba(4, 6, 17, .79)
+                    rgba(13, 12, 32, .90),
+                    rgba(4, 6, 17, .80)
                 );
 
             border:
-                1px solid rgba(150, 123, 255, .38);
+                1px solid
+                rgba(169, 135, 255, .40);
 
             box-shadow:
-                0 0 80px rgba(81, 48, 190, .20),
-                inset 0 0 80px rgba(79, 53, 170, .06);
+
+                0 0 80px
+                rgba(81, 48, 190, .20),
+
+                0 0 130px
+                rgba(194, 151, 48, .035),
+
+                inset 0 0 80px
+                rgba(79, 53, 170, .06);
 
             backdrop-filter: blur(10px);
 
-            clip-path: polygon(
-                0 30px,
-                30px 0,
-                calc(100% - 30px) 0,
-                100% 30px,
-                100% calc(100% - 30px),
-                calc(100% - 30px) 100%,
-                30px 100%,
-                0 calc(100% - 30px)
-            );
+            clip-path:
+                polygon(
+                    0 30px,
+                    30px 0,
+                    calc(100% - 30px) 0,
+                    100% 30px,
+                    100% calc(100% - 30px),
+                    calc(100% - 30px) 100%,
+                    30px 100%,
+                    0 calc(100% - 30px)
+                );
         }
 
-        /* Рамка */
+
+        /* Внутренняя рамка */
 
         .container::before {
             content: "";
 
             position: absolute;
+
             inset: 12px;
 
             border:
-                1px solid rgba(146, 116, 255, .12);
+                1px solid
+                rgba(210, 175, 80, .16);
 
             pointer-events: none;
         }
 
-        /* Углы */
+
+        /* =====================================================
+           CORNERS
+        ===================================================== */
 
         .corner {
             position: absolute;
@@ -427,66 +598,67 @@
             width: 55px;
             height: 55px;
 
-            border-color: rgba(174, 148, 255, .7);
             border-style: solid;
         }
+
 
         .corner.tl {
             top: 10px;
             left: 10px;
 
-            border-width: 1px 0 0 1px;
+            border-width:
+                1px 0 0 1px;
+
+            border-color:
+                var(--gold);
         }
+
 
         .corner.tr {
             top: 10px;
             right: 10px;
 
-            border-width: 1px 1px 0 0;
+            border-width:
+                1px 1px 0 0;
+
+            border-color:
+                var(--gold);
         }
+
 
         .corner.bl {
             bottom: 10px;
             left: 10px;
 
-            border-width: 0 0 1px 1px;
+            border-width:
+                0 0 1px 1px;
+
+            border-color:
+                rgba(137, 110, 255, .7);
         }
+
 
         .corner.br {
             bottom: 10px;
             right: 10px;
 
-            border-width: 0 1px 1px 0;
+            border-width:
+                0 1px 1px 0;
+
+            border-color:
+                rgba(137, 110, 255, .7);
         }
+
 
         /* =====================================================
-           TEXT
+           TITLE
         ===================================================== */
 
-        .eyebrow {
-            position: relative;
-
-            font-family: 'Orbitron', sans-serif;
-
-            font-size: 10px;
-            letter-spacing: 7px;
-
-            color: #8e7ad8;
-
-            text-transform: uppercase;
-
-            margin-bottom: 16px;
-
-            text-shadow:
-                0 0 12px rgba(126, 90, 255, .8);
-        }
-
         h1 {
-            position: relative;
-
             margin: 0;
 
-            font-size: clamp(52px, 9vw, 96px);
+            font-size:
+                clamp(52px, 9vw, 96px);
 
             line-height: 1;
 
@@ -495,12 +667,17 @@
             letter-spacing: 9px;
 
             background:
+
                 linear-gradient(
                     180deg,
-                    #ffffff 0%,
-                    #e7e0ff 38%,
-                    #b19aff 70%,
-                    #7354d6 100%
+
+                    #fff 0%,
+
+                    #eee8ff 35%,
+
+                    #d2b86a 62%,
+
+                    #9b7730 100%
                 );
 
             -webkit-background-clip: text;
@@ -509,50 +686,70 @@
             color: transparent;
 
             filter:
-                drop-shadow(0 0 12px rgba(135, 102, 255, .35));
+                drop-shadow(
+                    0 0 12px
+                    rgba(135, 102, 255, .35)
+                );
         }
 
+
         .separator {
-            width: min(430px, 65%);
+            width:
+                min(430px, 65%);
 
             height: 1px;
 
-            margin: 28px auto 25px;
+            margin:
+                28px auto 25px;
 
             background:
+
                 linear-gradient(
                     90deg,
+
                     transparent,
-                    #8468ed 25%,
-                    #d2c6ff 50%,
-                    #8468ed 75%,
+
+                    #7658db 20%,
+
+                    var(--gold) 50%,
+
+                    #7658db 80%,
+
                     transparent
                 );
 
             box-shadow:
-                0 0 12px rgba(122, 90, 255, .8);
+
+                0 0 12px
+                rgba(211, 169, 66, .45);
         }
+
 
         .launch {
             font-size: 13px;
 
             letter-spacing: 5px;
 
-            color: #aaa3c7;
+            color:
+                #b9b1d1;
 
             text-transform: uppercase;
 
             margin-bottom: 17px;
         }
 
+
         /* =====================================================
            TIMER
         ===================================================== */
 
         #timer {
-            font-family: 'Orbitron', sans-serif;
+            font-family:
+                'Orbitron',
+                sans-serif;
 
-            font-size: clamp(48px, 10vw, 94px);
+            font-size:
+                clamp(48px, 10vw, 94px);
 
             line-height: 1;
 
@@ -560,106 +757,91 @@
 
             letter-spacing: 5px;
 
-            color: #f8f5ff;
+            background:
+
+                linear-gradient(
+                    180deg,
+
+                    #ffffff 0%,
+
+                    #f4eeff 38%,
+
+                    #e7d78d 75%,
+
+                    #c29c3d 100%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
 
             text-shadow:
-                0 0 7px rgba(220, 209, 255, .9),
-                0 0 18px rgba(151, 117, 255, .8),
-                0 0 40px rgba(102, 66, 255, .55),
-                0 0 80px rgba(75, 40, 255, .25);
+                0 0 7px
+                rgba(220, 209, 255, .9);
 
-            margin: 5px 0 24px;
+            filter:
+
+                drop-shadow(
+                    0 0 10px
+                    rgba(151, 117, 255, .75)
+                )
+
+                drop-shadow(
+                    0 0 30px
+                    rgba(197, 157, 57, .25)
+                );
+
+            margin:
+                5px 0 24px;
         }
+
+
+        /* =====================================================
+           TIME LABELS
+        ===================================================== */
 
         .time-labels {
             display: flex;
 
             justify-content: center;
 
-            gap: clamp(30px, 8vw, 90px);
+            gap:
+                clamp(30px, 8vw, 90px);
 
-            font-family: 'Orbitron', sans-serif;
+            font-family:
+                'Orbitron',
+                sans-serif;
 
             font-size: 8px;
 
             letter-spacing: 4px;
 
-            color: #625b7d;
+            color:
+                #716984;
 
             text-transform: uppercase;
         }
+
 
         /* =====================================================
-           STATUS
+           LOCAL TIME
         ===================================================== */
 
-        .status {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            margin-top: 30px;
-
-            padding: 8px 17px;
-
-            border:
-                1px solid rgba(123, 94, 224, .25);
-
-            background:
-                rgba(86, 58, 180, .08);
-
-            color: #8076a3;
-
-            font-family: 'Orbitron', sans-serif;
-
-            font-size: 8px;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-
-            border-radius: 50%;
-
-            background: #9c83ff;
-
-            box-shadow:
-                0 0 8px #8968ff,
-                0 0 15px #6440ff;
-
-            animation: statusPulse 1.5s infinite;
-        }
-
-        @keyframes statusPulse {
-            0%, 100% {
-                opacity: .35;
-                transform: scale(.8);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
         .local-time {
-            margin-top: 18px;
+            margin-top: 30px;
 
             font-size: 10px;
 
             letter-spacing: 2px;
 
-            color: #57516d;
+            color:
+                #77708c;
         }
 
+
         /* =====================================================
-           SIDE FIGURES
+           WINGS
         ===================================================== */
 
         .figure {
@@ -667,143 +849,240 @@
 
             bottom: -30px;
 
-            width: 260px;
-            height: 620px;
+            width: 300px;
+            height: 650px;
 
             z-index: 3;
 
-            opacity: .35;
+            opacity: .46;
 
             pointer-events: none;
 
             filter:
-                drop-shadow(0 0 30px rgba(99, 65, 255, .18));
+
+                drop-shadow(
+                    0 0 25px
+                    rgba(101, 70, 255, .25)
+                )
+
+                drop-shadow(
+                    0 0 35px
+                    rgba(220, 180, 70, .10)
+                );
         }
+
 
         .figure.left {
             left: -25px;
-            transform: scaleX(-1);
+
+            transform:
+                scaleX(-1);
         }
+
 
         .figure.right {
             right: -25px;
         }
 
-        /*
-            Абстрактный силуэт персонажа.
-            Сделан CSS-формами, чтобы файл оставался автономным.
-        */
+
+        /* Голова/свет */
 
         .figure::before {
             content: "";
 
             position: absolute;
 
-            left: 90px;
-            top: 85px;
+            left: 105px;
+            top: 80px;
 
             width: 90px;
             height: 110px;
 
-            border-radius: 50% 50% 45% 45%;
+            border-radius:
+                50% 50% 45% 45%;
 
             background:
+
                 radial-gradient(
                     ellipse,
-                    rgba(152, 124, 255, .35),
-                    rgba(23, 18, 51, .7) 60%,
-                    transparent 72%
+
+                    rgba(255, 223, 135, .42),
+
+                    rgba(144, 110, 218, .18)
+                    38%,
+
+                    rgba(23, 18, 51, .85)
+                    68%,
+
+                    transparent
+                    75%
                 );
 
             filter: blur(2px);
         }
+
+
+        /* Тело */
 
         .figure::after {
             content: "";
 
             position: absolute;
 
-            left: 40px;
+            left: 45px;
             top: 160px;
 
-            width: 200px;
-            height: 390px;
+            width: 220px;
+            height: 410px;
 
             background:
+
                 linear-gradient(
                     160deg,
+
                     transparent 0 20%,
-                    rgba(55, 43, 105, .65) 40%,
-                    rgba(13, 11, 30, .95) 65%,
+
+                    rgba(90, 69, 157, .7) 38%,
+
+                    rgba(34, 27, 72, .85) 55%,
+
+                    rgba(14, 12, 31, .98) 72%,
+
                     transparent 90%
                 );
 
-            clip-path: polygon(
-                45% 0,
-                68% 8%,
-                82% 30%,
-                100% 55%,
-                78% 52%,
-                91% 100%,
-                55% 82%,
-                36% 100%,
-                40% 58%,
-                0 72%,
-                22% 42%,
-                10% 20%
-            );
+            clip-path:
+
+                polygon(
+                    45% 0,
+                    68% 8%,
+                    82% 30%,
+                    100% 55%,
+                    78% 52%,
+                    91% 100%,
+                    55% 82%,
+                    36% 100%,
+                    40% 58%,
+                    0 72%,
+                    22% 42%,
+                    10% 20%
+                );
         }
 
-        /* Крыло */
+
+        /* =====================================================
+           WING
+        ===================================================== */
 
         .wing {
             position: absolute;
 
-            top: 120px;
+            top: 105px;
 
-            width: 260px;
-            height: 270px;
+            width: 290px;
+            height: 300px;
 
             background:
+
                 radial-gradient(
                     ellipse at 50% 70%,
-                    rgba(119, 91, 220, .3),
-                    transparent 65%
+
+                    rgba(220, 179, 71, .26),
+
+                    rgba(115, 82, 209, .24)
+                    30%,
+
+                    transparent 68%
                 );
 
-            clip-path: polygon(
-                50% 100%,
-                42% 78%,
-                25% 60%,
-                0 45%,
-                20% 43%,
-                5% 25%,
-                33% 35%,
-                22% 8%,
-                48% 30%,
-                55% 0,
-                62% 30%,
-                86% 10%,
-                76% 38%,
-                100% 28%,
-                78% 55%,
-                65% 75%
-            );
+            clip-path:
+
+                polygon(
+                    50% 100%,
+
+                    42% 78%,
+
+                    25% 60%,
+
+                    0 45%,
+
+                    20% 43%,
+
+                    5% 25%,
+
+                    33% 35%,
+
+                    22% 8%,
+
+                    48% 30%,
+
+                    55% 0,
+
+                    62% 30%,
+
+                    86% 10%,
+
+                    76% 38%,
+
+                    100% 28%,
+
+                    78% 55%,
+
+                    65% 75%
+                );
 
             filter:
-                drop-shadow(0 0 20px rgba(112, 79, 255, .25));
+
+                drop-shadow(
+                    0 0 12px
+                    rgba(225, 190, 83, .35)
+                )
+
+                drop-shadow(
+                    0 0 28px
+                    rgba(108, 75, 255, .22)
+                );
         }
+
 
         .figure.left .wing {
             right: -20px;
         }
 
+
         .figure.right .wing {
             left: -20px;
         }
 
+
+        /* Золотые линии на крыльях */
+
+        .wing::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 20%;
+
+            border-radius: 50%;
+
+            border-top:
+                1px solid
+                rgba(255, 221, 128, .45);
+
+            border-bottom:
+                1px solid
+                rgba(181, 139, 48, .25);
+
+            transform: rotate(-20deg);
+
+            filter:
+                blur(.2px);
+        }
+
+
         /* =====================================================
-           BOTTOM GLOW
+           BOTTOM LIGHT
         ===================================================== */
 
         .bottom-glow {
@@ -815,14 +1094,21 @@
             width: 900px;
             height: 350px;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             border-radius: 50%;
 
             background:
+
                 radial-gradient(
                     ellipse,
-                    rgba(88, 57, 220, .25),
+
+                    rgba(89, 58, 220, .25),
+
+                    rgba(206, 163, 57, .07)
+                    35%,
+
                     transparent 70%
                 );
 
@@ -830,6 +1116,7 @@
 
             pointer-events: none;
         }
+
 
         /* =====================================================
            MOBILE
@@ -839,47 +1126,62 @@
 
             .container {
                 width: 94vw;
-                padding: 42px 18px 38px;
+
+                padding:
+                    42px 18px 38px;
             }
 
+
             .figure {
-                opacity: .12;
-                transform: scale(.7);
+                opacity: .15;
+
+                transform:
+                    scale(.7);
             }
+
 
             .figure.left {
                 left: -120px;
             }
 
+
             .figure.right {
                 right: -120px;
             }
+
 
             h1 {
                 letter-spacing: 4px;
             }
 
+
             #timer {
                 letter-spacing: 2px;
             }
+
 
             .launch {
                 letter-spacing: 3px;
             }
 
+
             .time-labels {
                 gap: 25px;
             }
+
 
             .magic-ring {
                 width: 105vw;
                 height: 105vw;
             }
         }
+
     </style>
 </head>
 
+
 <body>
+
 
     <!-- =====================================================
          BACKGROUND
@@ -888,18 +1190,23 @@
     <div class="background">
 
         <div class="aura"></div>
+
         <div class="rays"></div>
+
         <div class="stars"></div>
 
         <div class="particles">
+
             <span class="particle"></span>
             <span class="particle"></span>
             <span class="particle"></span>
             <span class="particle"></span>
+
             <span class="particle"></span>
             <span class="particle"></span>
             <span class="particle"></span>
             <span class="particle"></span>
+
         </div>
 
         <div class="magic-ring"></div>
@@ -908,12 +1215,13 @@
 
 
     <!-- =====================================================
-         SIDE FIGURES
+         WINGS
     ====================================================== -->
 
     <div class="figure left">
         <div class="wing"></div>
     </div>
+
 
     <div class="figure right">
         <div class="wing"></div>
@@ -921,7 +1229,7 @@
 
 
     <!-- =====================================================
-         MAIN
+         MAIN PANEL
     ====================================================== -->
 
     <main class="container">
@@ -931,32 +1239,33 @@
         <span class="corner bl"></span>
         <span class="corner br"></span>
 
-        <div class="eyebrow">
-            Ascension Protocol
-        </div>
 
         <h1>AION II</h1>
 
+
         <div class="separator"></div>
+
 
         <div class="launch">
             До открытия серверов
         </div>
 
+
         <div id="timer">
             00:00:00
         </div>
 
+
         <div class="time-labels">
+
             <span>Hours</span>
+
             <span>Minutes</span>
+
             <span>Seconds</span>
+
         </div>
 
-        <div class="status">
-            <span class="status-dot"></span>
-            Server synchronization
-        </div>
 
         <div class="local-time">
             Завтра • 16:00 • локальное время устройства
@@ -976,21 +1285,20 @@
 
         /*
          * ==========================================
-         * НАСТРОЙКА ВРЕМЕНИ ЗАПУСКА
+         * ВРЕМЯ ЗАПУСКА
          * ==========================================
          *
-         * Сейчас установлено:
-         *
-         * ЗАВТРА В 16:00
-         *
+         * Завтра в 16:00
          * по локальному времени устройства.
          */
 
         const targetDate = new Date();
 
+
         targetDate.setDate(
             targetDate.getDate() + 1
         );
+
 
         targetDate.setHours(
             16,
@@ -1001,91 +1309,102 @@
 
 
         /*
-         * ==========================================
-         * ЭЛЕМЕНТЫ
-         * ==========================================
+         * Элемент таймера
          */
 
-        const timer = document.getElementById("timer");
-        const launchText = document.querySelector(".launch");
-        const status = document.querySelector(".status");
+        const timer =
+            document.getElementById("timer");
 
 
         /*
-         * Форматирование чисел:
+         * Форматирование:
          *
-         * 5 → 05
+         * 7 → 07
          */
 
         function pad(number) {
-            return String(number).padStart(2, "0");
+
+            return String(number)
+                .padStart(2, "0");
+
         }
 
 
         /*
          * ==========================================
-         * ОБНОВЛЕНИЕ ТАЙМЕРА
+         * ОБНОВЛЕНИЕ
          * ==========================================
          */
 
         function updateTimer() {
 
-            const now = new Date();
+            const now =
+                new Date();
+
 
             const distance =
-                targetDate.getTime() -
+                targetDate.getTime()
+                -
                 now.getTime();
 
 
             /*
-             * Если время запуска наступило
+             * Сервер уже открылся
              */
 
             if (distance <= 0) {
 
-                timer.textContent = "00:00:00";
+                timer.textContent =
+                    "00:00:00";
 
-                launchText.textContent =
+                document
+                    .querySelector(".launch")
+                    .textContent =
                     "Серверы открыты";
-
-                status.innerHTML = `
-                    <span class="status-dot"></span>
-                    World is now accessible
-                `;
 
                 return;
             }
 
 
             /*
-             * Считаем часы.
-             *
-             * В отличие от стандартного варианта
-             * здесь часы НЕ сбрасываются после 24.
-             *
-             * Например:
-             *
-             * 27:15:42
+             * Часы
              */
 
-            const hours = Math.floor(
-                distance /
-                (1000 * 60 * 60)
-            );
+            const hours =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60)
+                );
 
 
-            const minutes = Math.floor(
-                (distance %
-                    (1000 * 60 * 60)) /
-                (1000 * 60)
-            );
+            /*
+             * Минуты
+             */
+
+            const minutes =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60 * 60)
+                    )
+                    /
+                    (1000 * 60)
+                );
 
 
-            const seconds = Math.floor(
-                (distance %
-                    (1000 * 60)) /
-                1000
-            );
+            /*
+             * Секунды
+             */
+
+            const seconds =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60)
+                    )
+                    /
+                    1000
+                );
 
 
             /*
@@ -1094,6 +1413,7 @@
 
             timer.textContent =
                 `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+
         }
 
 
