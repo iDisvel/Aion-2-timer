@@ -80,8 +80,6 @@
         }
 
 
-        /* Центральная аура */
-
         .aura {
             position: absolute;
 
@@ -411,8 +409,8 @@
         .magic-ring {
             position: absolute;
 
-            width: min(620px, 75vw);
-            height: min(620px, 75vw);
+            width: min(760px, 82vw);
+            height: min(760px, 82vw);
 
             left: 50%;
             top: 50%;
@@ -518,7 +516,6 @@
 
         /* =====================================================
            SIDE DECORATION
-           Вместо силуэтов и крыльев
         ===================================================== */
 
         .side-decoration {
@@ -552,8 +549,6 @@
         }
 
 
-        /* Основная светящаяся линия */
-
         .side-decoration::before {
             content: "";
 
@@ -582,8 +577,6 @@
                 0 0 25px rgba(217, 180, 90, .15);
         }
 
-
-        /* Рунические точки */
 
         .side-decoration::after {
             content:
@@ -625,10 +618,10 @@
 
             z-index: 10;
 
-            width: min(960px, 92vw);
+            width: min(1120px, 94vw);
 
             padding:
-                55px 45px 45px;
+                68px 65px 55px;
 
             text-align: center;
 
@@ -636,8 +629,8 @@
 
                 linear-gradient(
                     145deg,
-                    rgba(13, 12, 32, .90),
-                    rgba(4, 6, 17, .80)
+                    rgba(13, 12, 32, .92),
+                    rgba(4, 6, 17, .82)
                 );
 
             border:
@@ -646,27 +639,27 @@
 
             box-shadow:
 
-                0 0 80px
-                rgba(81, 48, 190, .20),
+                0 0 100px
+                rgba(81, 48, 190, .22),
 
-                0 0 130px
-                rgba(194, 151, 48, .035),
+                0 0 150px
+                rgba(194, 151, 48, .04),
 
-                inset 0 0 80px
-                rgba(79, 53, 170, .06);
+                inset 0 0 90px
+                rgba(79, 53, 170, .07);
 
             backdrop-filter: blur(10px);
 
             clip-path:
                 polygon(
-                    0 30px,
-                    30px 0,
-                    calc(100% - 30px) 0,
-                    100% 30px,
-                    100% calc(100% - 30px),
-                    calc(100% - 30px) 100%,
-                    30px 100%,
-                    0 calc(100% - 30px)
+                    0 35px,
+                    35px 0,
+                    calc(100% - 35px) 0,
+                    100% 35px,
+                    100% calc(100% - 35px),
+                    calc(100% - 35px) 100%,
+                    35px 100%,
+                    0 calc(100% - 35px)
                 );
         }
 
@@ -678,7 +671,7 @@
 
             position: absolute;
 
-            inset: 12px;
+            inset: 14px;
 
             border:
                 1px solid
@@ -695,16 +688,16 @@
         .corner {
             position: absolute;
 
-            width: 55px;
-            height: 55px;
+            width: 65px;
+            height: 65px;
 
             border-style: solid;
         }
 
 
         .corner.tl {
-            top: 10px;
-            left: 10px;
+            top: 11px;
+            left: 11px;
 
             border-width:
                 1px 0 0 1px;
@@ -715,8 +708,8 @@
 
 
         .corner.tr {
-            top: 10px;
-            right: 10px;
+            top: 11px;
+            right: 11px;
 
             border-width:
                 1px 1px 0 0;
@@ -727,8 +720,8 @@
 
 
         .corner.bl {
-            bottom: 10px;
-            left: 10px;
+            bottom: 11px;
+            left: 11px;
 
             border-width:
                 0 0 1px 1px;
@@ -739,8 +732,8 @@
 
 
         .corner.br {
-            bottom: 10px;
-            right: 10px;
+            bottom: 11px;
+            right: 11px;
 
             border-width:
                 0 1px 1px 0;
@@ -758,13 +751,13 @@
             margin: 0;
 
             font-size:
-                clamp(52px, 9vw, 96px);
+                clamp(58px, 9vw, 108px);
 
             line-height: 1;
 
             font-weight: 600;
 
-            letter-spacing: 9px;
+            letter-spacing: 10px;
 
             background:
 
@@ -795,12 +788,12 @@
 
         .separator {
             width:
-                min(430px, 65%);
+                min(520px, 70%);
 
             height: 1px;
 
             margin:
-                28px auto 25px;
+                32px auto 28px;
 
             background:
 
@@ -826,7 +819,7 @@
 
 
         .launch {
-            font-size: 13px;
+            font-size: 14px;
 
             letter-spacing: 5px;
 
@@ -835,7 +828,7 @@
 
             text-transform: uppercase;
 
-            margin-bottom: 17px;
+            margin-bottom: 20px;
         }
 
 
@@ -849,13 +842,13 @@
                 sans-serif;
 
             font-size:
-                clamp(48px, 10vw, 94px);
+                clamp(56px, 11vw, 108px);
 
             line-height: 1;
 
             font-weight: 500;
 
-            letter-spacing: 5px;
+            letter-spacing: 6px;
 
             background:
 
@@ -893,34 +886,7 @@
                 );
 
             margin:
-                5px 0 24px;
-        }
-
-
-        /* =====================================================
-           TIME LABELS
-        ===================================================== */
-
-        .time-labels {
-            display: flex;
-
-            justify-content: center;
-
-            gap:
-                clamp(30px, 8vw, 90px);
-
-            font-family:
-                'Orbitron',
-                sans-serif;
-
-            font-size: 8px;
-
-            letter-spacing: 2px;
-
-            color:
-                #716984;
-
-            text-transform: none;
+                8px 0 28px;
         }
 
 
@@ -929,14 +895,37 @@
         ===================================================== */
 
         .local-time {
-            margin-top: 30px;
+            margin-top: 25px;
 
-            font-size: 10px;
+            font-size: 11px;
 
             letter-spacing: 2px;
 
             color:
                 #77708c;
+        }
+
+
+        /* =====================================================
+           ЛИЧНАЯ ФРАЗА
+        ===================================================== */
+
+        .personal-message {
+            margin-top: 17px;
+
+            font-family:
+                'Cinzel',
+                serif;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            color:
+                rgba(150, 140, 174, .42);
+
+            text-shadow:
+                0 0 8px rgba(100, 75, 180, .12);
         }
 
 
@@ -950,8 +939,8 @@
             left: 50%;
             bottom: -180px;
 
-            width: 900px;
-            height: 350px;
+            width: 1100px;
+            height: 400px;
 
             transform:
                 translateX(-50%);
@@ -987,12 +976,12 @@
                 width: 94vw;
 
                 padding:
-                    42px 18px 38px;
+                    48px 20px 42px;
             }
 
 
             .side-decoration {
-                opacity: .18;
+                opacity: .15;
 
                 transform:
                     translateY(-50%)
@@ -1009,23 +998,33 @@
 
 
             h1 {
-                letter-spacing: 4px;
+                letter-spacing: 5px;
             }
 
 
             #timer {
                 letter-spacing: 2px;
+
+                font-size:
+                    clamp(48px, 13vw, 82px);
             }
 
 
             .launch {
                 letter-spacing: 3px;
+
+                font-size: 11px;
             }
 
 
-            .time-labels {
-                gap: 25px;
+            .local-time {
+                font-size: 9px;
 
+                letter-spacing: 1px;
+            }
+
+
+            .personal-message {
                 font-size: 7px;
 
                 letter-spacing: 1px;
@@ -1033,8 +1032,8 @@
 
 
             .magic-ring {
-                width: 105vw;
-                height: 105vw;
+                width: 110vw;
+                height: 110vw;
             }
         }
 
@@ -1113,19 +1112,13 @@
         </div>
 
 
-        <div class="time-labels">
-
-            <span>Часы</span>
-
-            <span>Минуты</span>
-
-            <span>Секунды</span>
-
+        <div class="local-time">
+            Завтра • 16:00 • локальное время устройства
         </div>
 
 
-        <div class="local-time">
-            Завтра • 16:00 • локальное время устройства
+        <div class="personal-message">
+            Саня, еще немного и идем ебашить
         </div>
 
     </main>
